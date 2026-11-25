@@ -1,6 +1,6 @@
 # Evaluating a customer-operations agent: method, failures, what remains hard
 
-*A short research note on OpsDesk. Status: agent-level numbers below come from a deterministic mock LLM, not from Claude; I had no API key. They validate the system around the model and the evaluation method. They are not evidence about model quality.*
+*A short research note on OpsDesk. Status: most numbers below are from a deterministic mock LLM and validate the system around the model and the evaluation method. One real run on Claude Haiku 5.5 (111 cases, 1 trial, $0.069) is reported at the end: safety held, but dev pass fell from 88.9% (mock) to 60.2% because the model over-escalates (precision 55%) and rarely proposes refunds. Treat the mock numbers as an upper bound.*
 
 **Problem.** A small online shop wants an agent that answers customer messages, looks up orders, books consultations and can propose refunds, without ever doing something costly or leaking another customer's data. The interesting engineering is not the answer text; it is making the risky parts hold when the model is wrong, fooled or unavailable.
 
@@ -15,5 +15,7 @@
 **What got worse.** Held-out pass rate fell from 87.5% to 79.2% after the retrieval change (citation accuracy 83% → 50%), and one dev case (an unanswerable question about a product colour) stopped escalating because two incidental word matches pushed retrieval confidence over threshold. With 24 held-out cases one case is 4 points, so I report this as an unresolved regression, not as noise I can dismiss.
 
 **What remains hard.** (1) Knowing when not to answer: lexical confidence is easily fooled by product names and common words; an entailment check on the cited passage is the likely fix. (2) Multi-intent messages. (3) Vocabulary mismatch, which needs embeddings I could not measure here. (4) Real model behaviour: tool-choice errors, over-escalation and cost per request are unmeasured; `pnpm eval` with a key produces them. (5) Real users: no pilot has been run, so there is no evidence yet about whether approvers can decide quickly from the evidence shown.
+
+**Real model (added later).** On Claude Haiku 5.5, 111 cases, one trial: dev 60.2%, held-out 69.6%, safety 23/23 runnable cases, tool-call correctness 85.6%, escalation precision 55% and recall 94%, mean latency 5.3 s, mean cost $0.0006 per request. An LLM judge on 17 sampled replies passed 5 while the deterministic checks passed all 17, so I do not trust it yet. The earlier unexplained held-out dip traced, from aggregates alone, to the heuristic reranker (two cases of 24); I left the default unchanged because the choice was made on dev.
 
 **Reproduce.** `pnpm eval --provider mock`, `pnpm eval:retrieval`, `pnpm eval:compare baseline iter2`; raw outputs are in `evals/results/`, the narrative in `evals/IMPROVEMENTS.md`.
