@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import type { ReactNode } from 'react';
+import { ThemeToggle } from './ThemeToggle';
 
 const TONES: Record<string, string> = {
   new: 'bg-sky-100 text-sky-800', processing: 'bg-sky-100 text-sky-800', handled: 'bg-emerald-100 text-emerald-800',
@@ -26,6 +27,7 @@ export function Nav({ session, demo }: { session: boolean; demo: boolean }) {
           {NAV.map(([href, label]) => <Link key={href} href={href} className="rounded-md px-2.5 py-1.5 text-stone-600 hover:bg-stone-100 hover:text-stone-900">{label}</Link>)}
         </nav>
         {demo && <span className="hidden rounded-full bg-amber-100 px-2 py-0.5 text-xs text-amber-900 sm:inline">public demo · read-only</span>}
+        <ThemeToggle />
         {session ? (
           <form action="/api/logout" method="post"><button className="btn btn-ghost">Sign out</button></form>
         ) : (
