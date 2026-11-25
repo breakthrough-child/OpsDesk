@@ -1,0 +1,248 @@
+{
+  "run_id": "2026-11-25T08-42-13-518Z_real_smoke",
+  "created_at": "2026-11-25T08:42:24.786Z",
+  "label": "real_smoke",
+  "provider": "anthropic",
+  "cases_run": 3,
+  "cases_planned": 3,
+  "trials": 1,
+  "skipped_mock_only": [],
+  "stopped_by_budget": null,
+  "cost": {
+    "budget_usd": 0.7,
+    "spent_usd": 0,
+    "api_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "per_case_usd_mean": 0,
+    "per_case_includes_judge": false
+  },
+  "judge": {
+    "sampled": 0,
+    "passed": 0,
+    "rate": null,
+    "case_ids": []
+  },
+  "provider_note": "agent=claude-haiku-5-5 classifier=claude-haiku-5-5 judge=claude-haiku-5-5; thinking=disabled, effort=low; 1 trial",
+  "business_now": "2026-11-10T12:00:00Z",
+  "retrieval_config": {
+    "chunker": "structure",
+    "mode": "hybrid",
+    "rerank": "heuristic",
+    "topK": 4,
+    "minScore": 0.1
+  },
+  "all": {
+    "n": 3,
+    "pass_rate": {
+      "n": 3,
+      "pass": 0,
+      "rate": 0
+    },
+    "intent_accuracy": {
+      "n": 3,
+      "pass": 0,
+      "rate": 0
+    },
+    "tool_call_correctness": {
+      "n": 3,
+      "pass": 1,
+      "rate": 0.3333333333333333
+    },
+    "approval_correctness": {
+      "n": 3,
+      "pass": 2,
+      "rate": 0.6666666666666666
+    },
+    "escalation": {
+      "precision": 0.3333333333333333,
+      "recall": 1,
+      "n": 3
+    },
+    "answer_correctness": {
+      "n": 2,
+      "pass": 1,
+      "rate": 0.5
+    },
+    "citation_accuracy": {
+      "n": 1,
+      "pass": 0,
+      "rate": 0
+    },
+    "safety": {
+      "n": 0,
+      "pass": 0,
+      "rate": null,
+      "failures": []
+    },
+    "latency_ms": {
+      "mean": 1048,
+      "p95": 1213
+    },
+    "cost_usd_mean": 0,
+    "tokens_mean": 0,
+    "by_category": {
+      "order_status": {
+        "n": 1,
+        "pass": 0,
+        "rate": 0
+      },
+      "return_refund": {
+        "n": 1,
+        "pass": 0,
+        "rate": 0
+      },
+      "unanswerable": {
+        "n": 1,
+        "pass": 0,
+        "rate": 0
+      }
+    },
+    "judge_cases": []
+  },
+  "dev": {
+    "n": 2,
+    "pass_rate": {
+      "n": 2,
+      "pass": 0,
+      "rate": 0
+    },
+    "intent_accuracy": {
+      "n": 2,
+      "pass": 0,
+      "rate": 0
+    },
+    "tool_call_correctness": {
+      "n": 2,
+      "pass": 1,
+      "rate": 0.5
+    },
+    "approval_correctness": {
+      "n": 2,
+      "pass": 2,
+      "rate": 1
+    },
+    "escalation": {
+      "precision": 0.5,
+      "recall": 1,
+      "n": 2
+    },
+    "answer_correctness": {
+      "n": 2,
+      "pass": 1,
+      "rate": 0.5
+    },
+    "citation_accuracy": {
+      "n": 0,
+      "pass": 0,
+      "rate": null
+    },
+    "safety": {
+      "n": 0,
+      "pass": 0,
+      "rate": null,
+      "failures": []
+    },
+    "latency_ms": {
+      "mean": 1092,
+      "p95": 1213
+    },
+    "cost_usd_mean": 0,
+    "tokens_mean": 0,
+    "by_category": {
+      "order_status": {
+        "n": 1,
+        "pass": 0,
+        "rate": 0
+      },
+      "unanswerable": {
+        "n": 1,
+        "pass": 0,
+        "rate": 0
+      }
+    },
+    "judge_cases": []
+  },
+  "heldout": {
+    "n": 1,
+    "pass_rate": {
+      "n": 1,
+      "pass": 0,
+      "rate": 0
+    },
+    "intent_accuracy": {
+      "n": 1,
+      "pass": 0,
+      "rate": 0
+    },
+    "tool_call_correctness": {
+      "n": 1,
+      "pass": 0,
+      "rate": 0
+    },
+    "approval_correctness": {
+      "n": 1,
+      "pass": 0,
+      "rate": 0
+    },
+    "escalation": {
+      "precision": 0,
+      "recall": null,
+      "n": 1
+    },
+    "answer_correctness": {
+      "n": 0,
+      "pass": 0,
+      "rate": null
+    },
+    "citation_accuracy": {
+      "n": 1,
+      "pass": 0,
+      "rate": 0
+    },
+    "safety": {
+      "n": 0,
+      "pass": 0,
+      "rate": null,
+      "failures": []
+    },
+    "latency_ms": {
+      "mean": 960,
+      "p95": 960
+    },
+    "cost_usd_mean": 0,
+    "tokens_mean": 0,
+    "by_category": {
+      "return_refund": {
+        "n": 1,
+        "pass": 0,
+        "rate": 0
+      }
+    },
+    "judge_cases": []
+  },
+  "dev_failures": [
+    {
+      "id": "os-01",
+      "category": "order_status",
+      "traceId": "tr_2392e1773445",
+      "notes": [
+        "intent: expected order_status, got other",
+        "tools: expected [lookup_order], got []",
+        "args: lookup_order.order_id expected \"BB-1003\", got undefined",
+        "escalation: expected false, got true (agent_error)",
+        "facts missing: BB-1003 | PP1003037731"
+      ]
+    },
+    {
+      "id": "un-01",
+      "category": "unanswerable",
+      "traceId": "tr_3e7b5ff5eed7",
+      "notes": [
+        "intent: expected product_question, got other"
+      ]
+    }
+  ],
+  "heldout_failure_ids_hidden": true,
+  "judge_used": false
+}

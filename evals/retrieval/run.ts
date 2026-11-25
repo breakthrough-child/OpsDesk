@@ -73,7 +73,7 @@ async function evalVariant(v: Variant, split: 'dev' | 'heldout') {
 const out: Record<string, unknown>[] = [];
 for (const v of VARIANTS) {
   if (v.needsEmbeddings && !embeddingsEnabled()) { out.push({ name: v.name, label: v.label, status: 'not measured: EMBEDDINGS_API_KEY not set' }); continue; }
-  if (v.needsLlm && process.env.LLM_PROVIDER !== 'anthropic' && !process.env.ANTHROPIC_API_KEY) { out.push({ name: v.name, label: v.label, status: 'not measured: ANTHROPIC_API_KEY not set' }); continue; }
+  if (v.needsLlm && process.env.RUN_LLM_RERANK !== '1') { out.push({ name: v.name, label: v.label, status: 'not measured: LLM reranker skipped (costs API money; set RUN_LLM_RERANK=1 to run)' }); continue; }
   out.push({ name: v.name, label: v.label, status: 'measured', dev: await evalVariant(v, 'dev'), heldout: await evalVariant(v, 'heldout') });
 }
 // Default is chosen on the DEV split only: best MRR, ties broken by recall@3.

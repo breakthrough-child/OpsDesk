@@ -1,0 +1,227 @@
+{
+  "run_id": "2026-11-25T08-43-38-778Z_real_smoke",
+  "created_at": "2026-11-25T08:44:03.406Z",
+  "label": "real_smoke",
+  "provider": "anthropic",
+  "cases_run": 3,
+  "cases_planned": 3,
+  "trials": 1,
+  "skipped_mock_only": [],
+  "stopped_by_budget": null,
+  "cost": {
+    "budget_usd": 0.7,
+    "spent_usd": 0.002029295,
+    "api_calls": 9,
+    "input_tokens": 19726,
+    "output_tokens": 2036,
+    "per_case_usd_mean": 0.0006764316666666667,
+    "per_case_includes_judge": false
+  },
+  "judge": {
+    "sampled": 0,
+    "passed": 0,
+    "rate": null,
+    "case_ids": []
+  },
+  "provider_note": "agent=claude-haiku-5-5 classifier=claude-haiku-5-5 judge=claude-haiku-5-5; thinking=disabled, effort=low; 1 trial",
+  "business_now": "2026-11-10T12:00:00Z",
+  "retrieval_config": {
+    "chunker": "structure",
+    "mode": "hybrid",
+    "rerank": "heuristic",
+    "topK": 4,
+    "minScore": 0.1
+  },
+  "all": {
+    "n": 3,
+    "pass_rate": {
+      "n": 3,
+      "pass": 2,
+      "rate": 0.6666666666666666
+    },
+    "intent_accuracy": {
+      "n": 3,
+      "pass": 3,
+      "rate": 1
+    },
+    "tool_call_correctness": {
+      "n": 3,
+      "pass": 2,
+      "rate": 0.6666666666666666
+    },
+    "approval_correctness": {
+      "n": 3,
+      "pass": 2,
+      "rate": 0.6666666666666666
+    },
+    "escalation": {
+      "precision": 0.5,
+      "recall": 1,
+      "n": 3
+    },
+    "answer_correctness": {
+      "n": 2,
+      "pass": 2,
+      "rate": 1
+    },
+    "citation_accuracy": {
+      "n": 1,
+      "pass": 0,
+      "rate": 0
+    },
+    "safety": {
+      "n": 0,
+      "pass": 0,
+      "rate": null,
+      "failures": []
+    },
+    "latency_ms": {
+      "mean": 5457.333333333333,
+      "p95": 6948
+    },
+    "cost_usd_mean": 0.0006764316666666667,
+    "tokens_mean": 2504,
+    "by_category": {
+      "order_status": {
+        "n": 1,
+        "pass": 1,
+        "rate": 1
+      },
+      "return_refund": {
+        "n": 1,
+        "pass": 0,
+        "rate": 0
+      },
+      "unanswerable": {
+        "n": 1,
+        "pass": 1,
+        "rate": 1
+      }
+    },
+    "judge_cases": []
+  },
+  "dev": {
+    "n": 2,
+    "pass_rate": {
+      "n": 2,
+      "pass": 2,
+      "rate": 1
+    },
+    "intent_accuracy": {
+      "n": 2,
+      "pass": 2,
+      "rate": 1
+    },
+    "tool_call_correctness": {
+      "n": 2,
+      "pass": 2,
+      "rate": 1
+    },
+    "approval_correctness": {
+      "n": 2,
+      "pass": 2,
+      "rate": 1
+    },
+    "escalation": {
+      "precision": 1,
+      "recall": 1,
+      "n": 2
+    },
+    "answer_correctness": {
+      "n": 2,
+      "pass": 2,
+      "rate": 1
+    },
+    "citation_accuracy": {
+      "n": 0,
+      "pass": 0,
+      "rate": null
+    },
+    "safety": {
+      "n": 0,
+      "pass": 0,
+      "rate": null,
+      "failures": []
+    },
+    "latency_ms": {
+      "mean": 4712,
+      "p95": 5812
+    },
+    "cost_usd_mean": 0.0005489125000000001,
+    "tokens_mean": 1380,
+    "by_category": {
+      "order_status": {
+        "n": 1,
+        "pass": 1,
+        "rate": 1
+      },
+      "unanswerable": {
+        "n": 1,
+        "pass": 1,
+        "rate": 1
+      }
+    },
+    "judge_cases": []
+  },
+  "heldout": {
+    "n": 1,
+    "pass_rate": {
+      "n": 1,
+      "pass": 0,
+      "rate": 0
+    },
+    "intent_accuracy": {
+      "n": 1,
+      "pass": 1,
+      "rate": 1
+    },
+    "tool_call_correctness": {
+      "n": 1,
+      "pass": 0,
+      "rate": 0
+    },
+    "approval_correctness": {
+      "n": 1,
+      "pass": 0,
+      "rate": 0
+    },
+    "escalation": {
+      "precision": 0,
+      "recall": null,
+      "n": 1
+    },
+    "answer_correctness": {
+      "n": 0,
+      "pass": 0,
+      "rate": null
+    },
+    "citation_accuracy": {
+      "n": 1,
+      "pass": 0,
+      "rate": 0
+    },
+    "safety": {
+      "n": 0,
+      "pass": 0,
+      "rate": null,
+      "failures": []
+    },
+    "latency_ms": {
+      "mean": 6948,
+      "p95": 6948
+    },
+    "cost_usd_mean": 0.00093147,
+    "tokens_mean": 4752,
+    "by_category": {
+      "return_refund": {
+        "n": 1,
+        "pass": 0,
+        "rate": 0
+      }
+    },
+    "judge_cases": []
+  },
+  "dev_failures": [],
+  "heldout_failure_ids_hidden": true,
+  "judge_used": false
+}

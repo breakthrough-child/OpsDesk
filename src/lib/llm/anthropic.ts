@@ -1,3 +1,4 @@
+import net from 'node:net';
 import Anthropic from '@anthropic-ai/sdk';
 import { AppError } from '../util';
 import { costOf } from './pricing';
@@ -8,9 +9,12 @@ export class AnthropicProvider implements LlmProvider {
   private client: Anthropic;
 
   constructor(apiKey = process.env.ANTHROPIC_API_KEY) {
+    // Node's happy-eyeballs default (250 ms per address) makes connections fail on slow or high-latency networks.
+    net.setDefaultAutoSelectFamilyAttemptTimeout(5000);
     if (!apiKey) throw new AppError('ANTHROPIC_API_KEY is not set', 'NO_API_KEY');
     // At most ONE retry of a failed call (budget rule): maxRetries 1.
-    this.client = new Anthropic({ apiKey, maxRetries: 1, timeout: 60_000 });
+    // baseURL is explicit: an ambient ANTHROPIC_BASE_URL (e.g. set by a dev tool's proxy) must not silently redirect the app's own key.
+    this.client = new Anthropic({ apiKey, baseURL: process.env.OPSDESK_ANTHROPIC_BASE_URL ?? 'https://api.anthropic.com', maxRetries: 1, timeout: 60_000 });
   }
 
   async complete(req: LlmRequest): Promise<LlmResponse> {
