@@ -13,7 +13,7 @@ pnpm dev          # open http://localhost:3000, first start seeds the fictional 
 ```
 Try the *Simulate a customer message* box, then open **Approvals** (sign in as admin) and the **trace** of any message. With no `ANTHROPIC_API_KEY` the agent runs on a deterministic mock; add a key to `.env.local` (see `.env.example`) to use Claude. Checks: `pnpm lint && pnpm typecheck && pnpm test && pnpm build`. Deploy: [docs/DEPLOY.md](docs/DEPLOY.md). In production the server refuses to start unless `ADMIN_PASSWORD` is strong and the secrets are set.
 
-**Honest status (read this first).** I had no Anthropic key, Supabase project, Google credentials or Vercel access while building. So: everything runs end to end locally and in tests against a **deterministic mock LLM**; every agent eval number below is from that mock and says nothing about Claude's quality; real integrations (Google Calendar, Slack, Supabase Auth, embeddings, Anthropic) are implemented with a mock mode each but **were not exercised live**; the app is **not deployed** (it is deploy-ready, steps below). No pilot has been run.
+**Honest status (read this first).** Everything runs end to end locally and in tests on a deterministic mock LLM, and the eval harness has also been run once against **Claude Haiku 5.5** (111 cases, 1 trial, $0.069 total). Real-model results are below and are weaker than the mock's: safety held (23/23 runnable safety cases), but the model over-escalates (escalation precision 55%) and does not propose refunds or bookings as often as expected. Google Calendar, Slack, Supabase, embeddings and the Vercel deployment were **not exercised live** (no credentials). Not deployed (deploy guide: [docs/DEPLOY.md](docs/DEPLOY.md)). No pilot has been run.
 
 ## Problem
 Small shops answer the same questions all day (where is my order, can I return this, how do I descale it). Staff are the bottleneck, but handing customers and refunds to an AI unsupervised is risky: it can promise refunds, leak another customer's order, or make up policy.
@@ -81,50 +81,74 @@ With a key: `cp .env.example .env.local`, set `ANTHROPIC_API_KEY`. Then `pnpm te
 
 ### Eval results (latest run)
 <!-- AGENT_TABLE:START -->
-Run `2026-11-17T16-42-18-454Z_iter2` · provider: **mock** · 114 cases (90 dev, 24 held-out).
+Run `2026-11-25T08-44-30-545Z_real` · provider: **anthropic** · 111 cases run, 1 trial (88 dev, 23 held-out) · 3 mock-only cases skipped (ft-07, ft-08, ft-09).
 
-> **These numbers come from the deterministic mock provider, not from Claude.** They measure the rule engine plus the system around it (retrieval, policy, approval gate, MCP, escalation). Model numbers: not yet measured (no API key was available). Run `pnpm eval` with `ANTHROPIC_API_KEY` set.
+Real spend for this run: **$0.0691** of a $0.70 budget (329 API calls, 699,506 input / 85,819 output tokens; model claude-haiku-5-5, thinking off, effort low). Judge: 5/17 sampled replies passed the fixed-rubric LLM judge.
 
 | Metric | Dev | Held-out | All |
 |---|---|---|---|
-| Case pass rate | 88.9% (80/90) | 79.2% (19/24) | 86.8% (99/114) |
+| Case pass rate | 60.2% (53/88) | 69.6% (16/23) | 62.2% (69/111) |
+| Intent accuracy | 90.9% | 91.3% | 91.0% |
+| Tool-call correctness | 85.7% | 85.0% | 85.6% |
+| Approval correctness | 92.0% | 91.3% | 91.9% |
+| Escalation precision / recall | 54.3% / 92.6% | 58.3% / 100.0% | 55.2% / 94.1% |
+| Answer correctness (deterministic facts) | 91.2% | 88.9% | 90.7% |
+| Citation accuracy | 91.7% | 83.3% | 90.0% |
+| **Safety pass rate** (injection + privacy + gates) | 100.0% (17/17) | 100.0% (6/6) | 100.0% (23/23) |
+| Latency mean / p95 | 5336 ms / 8834 ms | 5387 ms / 7887 ms | 5347 ms / 8317 ms |
+| Mean cost per request (agent calls only) | $0.00061 | $0.00062 | $0.00061 |
+
+Per category (all cases run): ambiguous 2/6 · angry legal 8/8 · booking 1/8 · failure 7/10 · injection 4/9 · multi step 2/4 · order status 7/10 · out of scope 6/6 · policy question 9/10 · privacy 2/7 · product question 12/13 · return refund 3/13 · unanswerable 6/7
+
+LLM-as-judge: used on 17 sampled cases (listed in the run summary); it does not change case pass/fail.
+<!-- AGENT_TABLE:END -->
+
+### Mock-provider run (for comparison; not Claude)
+<!-- MOCK_TABLE:START -->
+Run `2026-11-25T08-29-18-068Z_iter3_mock` · provider: **mock** · 114 cases run, 1 trial (90 dev, 24 held-out).
+
+> **Mock provider, not Claude.** These numbers measure the rule engine plus the system around it (retrieval, policy, approval gate, MCP, escalation).
+
+| Metric | Dev | Held-out | All |
+|---|---|---|---|
+| Case pass rate | 90.0% (81/90) | 79.2% (19/24) | 87.7% (100/114) |
 | Intent accuracy | 94.4% | 91.7% | 93.9% |
 | Tool-call correctness | 98.8% | 100.0% | 99.1% |
 | Approval correctness | 100.0% | 95.8% | 99.1% |
-| Escalation precision / recall | 100.0% / 96.4% | 100.0% / 100.0% | 100.0% / 97.1% |
-| Answer correctness (deterministic facts) | 94.8% | 89.5% | 93.5% |
+| Escalation precision / recall | 100.0% / 100.0% | 100.0% / 100.0% | 100.0% / 100.0% |
+| Answer correctness (deterministic facts) | 96.6% | 89.5% | 94.8% |
 | Citation accuracy | 91.7% | 50.0% | 83.3% |
 | **Safety pass rate** (injection + privacy + gates) | 100.0% (18/18) | 100.0% (6/6) | 100.0% (24/24) |
-| Latency mean / p95 | 129 ms / 260 ms | 183 ms / 430 ms | 140 ms / 276 ms |
-| Mean cost per request | not measured (mock) | not measured (mock) | not measured (mock) |
+| Latency mean / p95 | 43 ms / 61 ms | 76 ms / 341 ms | 50 ms / 69 ms |
+| Mean cost per request (agent calls only) | not measured (mock, $0) | not measured (mock, $0) | not measured (mock, $0) |
 
-Per category (all cases): ambiguous 4/6 · angry legal 8/8 · booking 8/8 · failure 13/13 · injection 7/9 · multi step 2/4 · order status 9/10 · out of scope 6/6 · policy question 8/10 · privacy 7/7 · product question 12/13 · return refund 10/13 · unanswerable 5/7
+Per category (all cases run): ambiguous 4/6 · angry legal 8/8 · booking 8/8 · failure 13/13 · injection 7/9 · multi step 2/4 · order status 9/10 · out of scope 6/6 · policy question 8/10 · privacy 7/7 · product question 12/13 · return refund 10/13 · unanswerable 6/7
 
 LLM-as-judge: not used in this run (deterministic checks only).
-<!-- AGENT_TABLE:END -->
+<!-- MOCK_TABLE:END -->
 
 ### Retrieval results
 <!-- RETRIEVAL_TABLE:START -->
-Run `2026-11-17T16-42-03-393Z_retrieval_final` · 68 answerable + 15 unanswerable questions (about 80% dev / 20% held-out). Cells: recall@1 / @3 / @5 (%) · MRR · extractive answer hit. **Default chosen on dev only: `v5_structure_hybrid_rerank`.**
+Run `2026-11-25T08-44-48-518Z_retrieval_real` · 68 answerable + 15 unanswerable questions (about 80% dev / 20% held-out). Cells: recall@1 / @3 / @5 (%) · MRR · extractive answer hit. **Default chosen on dev only: `v5_structure_hybrid_rerank`.**
 
 | Variant | Dev | Held-out | Latency/query |
 |---|---|---|---|
-| Baseline: fixed-size chunks + keyword (Postgres FTS) | 67 / 84 / 91 · 0.76 · 56% | 77 / 100 / 100 · 0.87 · 77% | 17.6 ms |
-| Structure-aware chunks + keyword | 60 / 89 / 96 · 0.75 · 60% | 62 / 100 / 100 · 0.81 · 62% | 14.3 ms |
-| Hybrid: RRF(body FTS, heading FTS) [keyword legs only] | 51 / 89 / 95 · 0.70 · 53% | 69 / 100 / 100 · 0.83 · 69% | 18.3 ms |
-| Structure + keyword + IDF heuristic rerank | 85 / 98 / 98 · 0.91 · 85% | 92 / 100 / 100 · 0.96 · 92% | 19.0 ms |
-| Hybrid (kw legs) + IDF heuristic rerank **(default)** | 87 / 98 / 98 · 0.92 · 87% | 92 / 100 / 100 · 0.96 · 92% | 21.2 ms |
-| Hybrid (kw legs) + heuristic rerank + metadata filter | 85 / 96 / 96 · 0.90 · 85% | 92 / 100 / 100 · 0.96 · 92% | 19.1 ms |
+| Baseline: fixed-size chunks + keyword (Postgres FTS) | 67 / 84 / 91 · 0.76 · 56% | 69 / 100 / 100 · 0.83 · 69% | 6.7 ms |
+| Structure-aware chunks + keyword | 60 / 89 / 96 · 0.75 · 60% | 54 / 100 / 100 · 0.76 · 54% | 5.9 ms |
+| Hybrid: RRF(body FTS, heading FTS) [keyword legs only] | 51 / 89 / 95 · 0.70 · 53% | 62 / 100 / 100 · 0.78 · 62% | 9.2 ms |
+| Structure + keyword + IDF heuristic rerank | 85 / 98 / 98 · 0.91 · 85% | 92 / 100 / 100 · 0.96 · 92% | 6.2 ms |
+| Hybrid (kw legs) + IDF heuristic rerank **(default)** | 87 / 98 / 98 · 0.92 · 87% | 92 / 100 / 100 · 0.96 · 92% | 8.4 ms |
+| Hybrid (kw legs) + heuristic rerank + metadata filter | 85 / 96 / 96 · 0.90 · 85% | 92 / 100 / 100 · 0.96 · 92% | 12.8 ms |
 | Baseline: fixed chunks + vector search | not measured: EMBEDDINGS_API_KEY not set | | |
 | Hybrid: keyword + vector (RRF) | not measured: EMBEDDINGS_API_KEY not set | | |
-| Hybrid + LLM reranker | not measured: ANTHROPIC_API_KEY not set | | |
+| Hybrid + LLM reranker | not measured: LLM reranker skipped (costs API money; set RUN_LLM_RERANK=1 to run) | | |
 
-Not measured: groundedness of final answers with an LLM, cost per query (no LLM/embedding calls are made by the measured variants, so $0), and every vector or LLM-rerank variant (no API keys). "Extractive answer hit" is a deterministic proxy: do the sentences quoted from the top chunk contain the gold passage?
+Not measured: groundedness of final answers per retrieval variant (needs an LLM answerer; the real agent run reports a judged sample separately), cost per query (the measured variants make no LLM or embedding calls, so $0), and every vector or LLM-rerank variant (skipped to save money). "Extractive answer hit" is a deterministic proxy: do the sentences quoted from the top chunk contain the gold passage?
 
-Abstain behaviour of the default on dev (confidence threshold → answerable questions answered / unanswerable questions correctly refused): 0.3: 95% / 69% · 0.4: 95% / 77% · 0.5: 91% / 85% · 0.6: 78% / 100% · 0.7: 71% / 100%.
+Abstain behaviour of the default on dev (confidence threshold → answerable questions answered / unanswerable questions correctly refused): 0.3: 95% / 77% · 0.4: 95% / 85% · 0.5: 93% / 92% · 0.6: 84% / 100% · 0.7: 75% / 100%.
 <!-- RETRIEVAL_TABLE:END -->
 
-Progress across runs (mock provider): dev pass rate 71.1% → 84.4% → 88.9%; held-out 66.7% → 87.5% → **79.2%** (regressed in iteration 2; open). Safety 24/24 in all three.
+Progress across mock runs: dev pass rate 71.1% → 84.4% → 88.9% → 90.0% (after the `un-03` fix); held-out 66.7% → 87.5% → 79.2% → 79.2%. The held-out dip in iteration 2 was traced (aggregates only) to the heuristic reranker, two cases out of 24; see [evals/IMPROVEMENTS.md](evals/IMPROVEMENTS.md). Safety 100% in every run. **Real model vs mock:** dev 60.2% vs 88.9%, held-out 69.6% vs 79.2%, escalation precision 55% vs 100%, tool-call correctness 85.6% vs 99.1%; latency 5.3 s vs 0.14 s mean. The mock overstates how well the agent does with a real model.
 
 ## Failure modes
 Each is a test and at least one eval case (`tests/agent.test.ts`, `tests/mcp.test.ts`, `evals/cases/failure.json`): tool timeout, 5xx (retried, then escalate), invalid arguments (rejected client-side before any call), partial results (never treated as complete), duplicate delivery and double approval (refund happens once), wrong tool (denied), agent loop (cut off), invented order id (reports not found), unauthorized customer, unsafe request (stays gated), API down (circuit breaker opens, honest holding reply). Fault injection exists only in test mode and is ignored in production (tested).
@@ -141,10 +165,10 @@ Each is a test and at least one eval case (`tests/agent.test.ts`, `tests/mcp.tes
 Every request has a trace (`/traces/:id`): classification, each retrieval (query, variant, top chunks, scores, confidence), each model call, each tool attempt (arguments, result, retries), policy decisions, approvals, escalation reasons, guards, with per-step and total tokens, USD cost and latency. The audit page (`/audit`) filters tool calls by actor, tool and status and exports CSV. `/integrations` shows mode, last success and last error per integration.
 
 ## Performance
-Mock provider, in-process: mean ~129 ms and p95 ~260 ms per dev case end to end (includes real Postgres queries, MCP calls and retrieval). **Real-model latency: not measured.** Retrieval alone is ~20 ms per query. PGlite takes ~14 s to start (tests and eval runs pay this once per process).
+Real Claude Haiku 5.5 (thinking off, effort low), full agent pipeline including Postgres, MCP and retrieval: **mean 5.3 s, p95 8.3 s per request** (111 cases, 1 trial, run from a laptop network). Mock provider for comparison: mean ~140 ms. Retrieval alone is ~6 to 9 ms per query. PGlite takes up to ~14 s to start on a cold, slow machine (tests and eval runs pay this once per process).
 
 ## Cost per request
-**Not measured**: the mock costs $0 and no API key was available. Token counts are recorded per step and cost is computed from `src/lib/llm/pricing.ts`, whose prices are **assumptions** to verify. A request makes one classification call and typically 2 to 4 agent calls. Run `pnpm eval` with a key to get `cost_usd_mean`; the demo has a daily cost cap.
+**Measured with Claude Haiku 5.5** (the only model used): mean **$0.00061 per request** for the agent calls (1 classification call plus about 2 to 4 agent calls; 111 cases, 1 trial; thinking off, effort low), at Anthropic's published $0.10 / $0.50 per million input / output tokens. The whole 111-case run cost **$0.0691** (329 API calls, 699,506 input and 85,819 output tokens, including a 17-case judge sample), plus $0.0020 for a 3-case smoke test. Larger models, higher effort and prompt caching were not measured. The demo has a daily cost cap.
 
 ## Deployment
 **Not deployed.** Ready for Vercel (`vercel.json`, production build passes). Exact steps:
@@ -164,10 +188,13 @@ Mock provider, in-process: mean ~129 ms and p95 ~260 ms per dev case end to end 
 - Lexical confidence is a weak "do I know this?" signal (see the un-03 regression).
 
 ## Known limitations
-- Agent numbers are from a rule-based mock, not Claude. Real integrations, deployment, LLM judge, LLM reranker, vector search and pgvector migration are **not exercised**.
-- Held-out regression in iteration 2 is unexplained; a "don't guess" regression (`un-03`) is open.
+- The real-model run is **one trial of 111 cases on Haiku 5.5 only** (a larger model, other effort levels and repeated trials are not measured, so there is no variance estimate; with 23 held-out cases one case is about 4 points). Prompts were not tuned for the real model.
+- With the real model the agent **over-escalates** (precision 55%), rarely proposes refunds/bookings as the cases expect, and the approval gate was exercised on the model's happy path only a few times. The mock numbers overstate quality.
+- The LLM-as-judge sample (17 cases) disagrees with the deterministic fact checks (5/17 pass vs 17/17); the judge is uncalibrated, so no groundedness figure is claimed.
+- Google Calendar, Slack, Supabase (Auth, RLS), embeddings/vector search, the LLM reranker and the Vercel deployment are **not exercised**.
+- The held-out dip in iteration 2 is attributed to the heuristic reranker from aggregates only (two cases); one design choice for the `un-03` fix was made after seeing a held-out aggregate (disclosed in `evals/IMPROVEMENTS.md`).
 - Multi-intent messages are not handled by the mock; no `list_bookings` tool, so reschedules/cancels without a booking id are escalated.
-- Every reply needs a human click; the circuit breaker is per instance; PGlite is single-connection; prices are assumed.
+- Every reply needs a human click; the circuit breaker is per instance; PGlite is single-connection.
 
 ## Future improvements
 Run the real model and report cost/latency; embeddings + hybrid vector search; entailment check on cited passages; `list_bookings`; multi-intent planning; relaxed gating for low-risk replies after shadow mode; real email/WhatsApp adapter; run the pilot.
