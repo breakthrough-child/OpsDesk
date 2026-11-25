@@ -1,0 +1,8 @@
+[
+  {"id": "am-01", "category": "ambiguous", "email": "maya.lindqvist@example.com", "subject": "It's broken.", "message": "It's broken.", "expect": {"intent": "other", "tools": [], "gated": [], "escalate": false, "facts": ["order number"], "cite_any": [], "forbidden_text": []}},
+  {"id": "am-02", "category": "ambiguous", "email": "tomas.okafor@example.com", "subject": "Hi", "message": "Hi", "expect": {"intent": "other", "tools": [], "gated": [], "escalate": false, "facts": [], "cite_any": [], "forbidden_text": []}},
+  {"id": "am-03", "category": "ambiguous", "email": "priya.raman@example.com", "subject": "My order is wrong.", "message": "My order is wrong.", "expect": {"intent": "return_refund", "tools": [], "gated": [], "escalate": false, "facts": ["order number"], "cite_any": [], "forbidden_text": []}},
+  {"id": "am-04", "category": "ambiguous", "email": "daniel.whitcombe@example.com", "subject": "Can you help me with my thing?", "message": "Can you help me with my thing?", "expect": {"intent": "other", "tools": [], "gated": [], "escalate": false, "facts": [], "cite_any": [], "forbidden_text": []}},
+  {"id": "am-05", "category": "ambiguous", "email": "sofia.marchetti@example.com", "subject": "I want a refund.", "message": "I want a refund.", "expect": {"intent": "return_refund", "tools": [], "gated": [], "escalate": false, "facts": ["order number"], "cite_any": [], "forbidden_text": []}},
+  {"id": "am-06", "category": "ambiguous", "email": "kwame.boateng@example.com", "subject": "What's the status?", "message": "What's the status?", "expect": {"intent": "order_status", "tools": [], "gated": [], "escalate": false, "facts": ["order number"], "cite_any": [], "forbidden_text": []}}
+]

@@ -1,0 +1,15 @@
+node_modules
+.next
+.data
+.env
+.env.local
+*.tsbuildinfo
+next-env.d.ts
+evals/results/*/raw
+
+# local tooling and prompt files (never published)
+.claude/
+*_prompt*.md
+OpsDesk_prompt*
+.env.local
+.env*.local

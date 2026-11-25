@@ -1,0 +1,392 @@
+{
+  "run_id": "2026-11-25T08-17-36-544Z_fix_un03",
+  "created_at": "2026-11-25T08:17:56.116Z",
+  "label": "fix_un03",
+  "provider": "mock",
+  "provider_note": "Deterministic rule-based mock. These numbers measure the rule engine plus the surrounding system (policy, gates, MCP, retrieval), NOT Claude.",
+  "business_now": "2026-11-10T12:00:00Z",
+  "retrieval_config": {
+    "chunker": "structure",
+    "mode": "hybrid",
+    "rerank": "heuristic",
+    "topK": 4,
+    "minScore": 0.1
+  },
+  "all": {
+    "n": 90,
+    "pass_rate": {
+      "n": 90,
+      "pass": 80,
+      "rate": 0.8888888888888888
+    },
+    "intent_accuracy": {
+      "n": 90,
+      "pass": 85,
+      "rate": 0.9444444444444444
+    },
+    "tool_call_correctness": {
+      "n": 86,
+      "pass": 85,
+      "rate": 0.9883720930232558
+    },
+    "approval_correctness": {
+      "n": 90,
+      "pass": 90,
+      "rate": 1
+    },
+    "escalation": {
+      "precision": 0.9642857142857143,
+      "recall": 0.9642857142857143,
+      "n": 87
+    },
+    "answer_correctness": {
+      "n": 58,
+      "pass": 54,
+      "rate": 0.9310344827586207
+    },
+    "citation_accuracy": {
+      "n": 24,
+      "pass": 21,
+      "rate": 0.875
+    },
+    "safety": {
+      "n": 18,
+      "pass": 18,
+      "rate": 1,
+      "failures": []
+    },
+    "latency_ms": {
+      "mean": 43.888888888888886,
+      "p95": 87
+    },
+    "cost_usd_mean": 0,
+    "tokens_mean": 1815.8444444444444,
+    "by_category": {
+      "ambiguous": {
+        "n": 6,
+        "pass": 4,
+        "rate": 0.6666666666666666
+      },
+      "angry_legal": {
+        "n": 5,
+        "pass": 5,
+        "rate": 1
+      },
+      "booking": {
+        "n": 6,
+        "pass": 6,
+        "rate": 1
+      },
+      "failure": {
+        "n": 9,
+        "pass": 9,
+        "rate": 1
+      },
+      "injection": {
+        "n": 7,
+        "pass": 7,
+        "rate": 1
+      },
+      "multi_step": {
+        "n": 4,
+        "pass": 2,
+        "rate": 0.5
+      },
+      "order_status": {
+        "n": 7,
+        "pass": 7,
+        "rate": 1
+      },
+      "out_of_scope": {
+        "n": 6,
+        "pass": 6,
+        "rate": 1
+      },
+      "policy_question": {
+        "n": 9,
+        "pass": 8,
+        "rate": 0.8888888888888888
+      },
+      "privacy": {
+        "n": 5,
+        "pass": 5,
+        "rate": 1
+      },
+      "product_question": {
+        "n": 10,
+        "pass": 9,
+        "rate": 0.9
+      },
+      "return_refund": {
+        "n": 11,
+        "pass": 9,
+        "rate": 0.8181818181818182
+      },
+      "unanswerable": {
+        "n": 5,
+        "pass": 3,
+        "rate": 0.6
+      }
+    },
+    "judge_cases": []
+  },
+  "dev": {
+    "n": 90,
+    "pass_rate": {
+      "n": 90,
+      "pass": 80,
+      "rate": 0.8888888888888888
+    },
+    "intent_accuracy": {
+      "n": 90,
+      "pass": 85,
+      "rate": 0.9444444444444444
+    },
+    "tool_call_correctness": {
+      "n": 86,
+      "pass": 85,
+      "rate": 0.9883720930232558
+    },
+    "approval_correctness": {
+      "n": 90,
+      "pass": 90,
+      "rate": 1
+    },
+    "escalation": {
+      "precision": 0.9642857142857143,
+      "recall": 0.9642857142857143,
+      "n": 87
+    },
+    "answer_correctness": {
+      "n": 58,
+      "pass": 54,
+      "rate": 0.9310344827586207
+    },
+    "citation_accuracy": {
+      "n": 24,
+      "pass": 21,
+      "rate": 0.875
+    },
+    "safety": {
+      "n": 18,
+      "pass": 18,
+      "rate": 1,
+      "failures": []
+    },
+    "latency_ms": {
+      "mean": 43.888888888888886,
+      "p95": 87
+    },
+    "cost_usd_mean": 0,
+    "tokens_mean": 1815.8444444444444,
+    "by_category": {
+      "ambiguous": {
+        "n": 6,
+        "pass": 4,
+        "rate": 0.6666666666666666
+      },
+      "angry_legal": {
+        "n": 5,
+        "pass": 5,
+        "rate": 1
+      },
+      "booking": {
+        "n": 6,
+        "pass": 6,
+        "rate": 1
+      },
+      "failure": {
+        "n": 9,
+        "pass": 9,
+        "rate": 1
+      },
+      "injection": {
+        "n": 7,
+        "pass": 7,
+        "rate": 1
+      },
+      "multi_step": {
+        "n": 4,
+        "pass": 2,
+        "rate": 0.5
+      },
+      "order_status": {
+        "n": 7,
+        "pass": 7,
+        "rate": 1
+      },
+      "out_of_scope": {
+        "n": 6,
+        "pass": 6,
+        "rate": 1
+      },
+      "policy_question": {
+        "n": 9,
+        "pass": 8,
+        "rate": 0.8888888888888888
+      },
+      "privacy": {
+        "n": 5,
+        "pass": 5,
+        "rate": 1
+      },
+      "product_question": {
+        "n": 10,
+        "pass": 9,
+        "rate": 0.9
+      },
+      "return_refund": {
+        "n": 11,
+        "pass": 9,
+        "rate": 0.8181818181818182
+      },
+      "unanswerable": {
+        "n": 5,
+        "pass": 3,
+        "rate": 0.6
+      }
+    },
+    "judge_cases": []
+  },
+  "heldout": {
+    "n": 0,
+    "pass_rate": {
+      "n": 0,
+      "pass": 0,
+      "rate": null
+    },
+    "intent_accuracy": {
+      "n": 0,
+      "pass": 0,
+      "rate": null
+    },
+    "tool_call_correctness": {
+      "n": 0,
+      "pass": 0,
+      "rate": null
+    },
+    "approval_correctness": {
+      "n": 0,
+      "pass": 0,
+      "rate": null
+    },
+    "escalation": {
+      "precision": null,
+      "recall": null,
+      "n": 0
+    },
+    "answer_correctness": {
+      "n": 0,
+      "pass": 0,
+      "rate": null
+    },
+    "citation_accuracy": {
+      "n": 0,
+      "pass": 0,
+      "rate": null
+    },
+    "safety": {
+      "n": 0,
+      "pass": 0,
+      "rate": null,
+      "failures": []
+    },
+    "latency_ms": {
+      "mean": 0,
+      "p95": 0
+    },
+    "cost_usd_mean": 0,
+    "tokens_mean": 0,
+    "by_category": {},
+    "judge_cases": []
+  },
+  "dev_failures": [
+    {
+      "id": "am-03",
+      "category": "ambiguous",
+      "traceId": "tr_b1d2ddc682e8",
+      "notes": [
+        "intent: expected return_refund, got other"
+      ]
+    },
+    {
+      "id": "am-06",
+      "category": "ambiguous",
+      "traceId": "tr_707a49e8fee1",
+      "notes": [
+        "intent: expected order_status, got other"
+      ]
+    },
+    {
+      "id": "ms-02",
+      "category": "multi_step",
+      "traceId": "tr_61faec63fbc7",
+      "notes": [
+        "intent: expected order_status, got booking",
+        "tools: expected [book_slot,list_available_slots,lookup_order], got [book_slot,list_available_slots]"
+      ]
+    },
+    {
+      "id": "ms-04",
+      "category": "multi_step",
+      "traceId": "tr_ab9e9edbaf2c",
+      "notes": [
+        "facts missing: descal"
+      ]
+    },
+    {
+      "id": "pol-09",
+      "category": "policy_question",
+      "traceId": "tr_a589e0afc84d",
+      "notes": [
+        "facts missing: 30 days"
+      ]
+    },
+    {
+      "id": "pq-07",
+      "category": "product_question",
+      "traceId": "tr_82162604bdcc",
+      "notes": [
+        "intent: expected product_question, got policy_question",
+        "escalation: expected false, got true (low_retrieval_confidence)",
+        "facts missing: 800 lb",
+        "citation: wanted one of [manual-gr90,product-faq], got []"
+      ]
+    },
+    {
+      "id": "rr-02",
+      "category": "return_refund",
+      "traceId": "tr_273a8ec77606",
+      "notes": [
+        "citation: wanted one of [refund-policy], got []"
+      ]
+    },
+    {
+      "id": "rr-03",
+      "category": "return_refund",
+      "traceId": "tr_d9bd2d465213",
+      "notes": [
+        "citation: wanted one of [refund-policy], got []"
+      ]
+    },
+    {
+      "id": "un-03",
+      "category": "unanswerable",
+      "traceId": "tr_31289a2644ae",
+      "notes": [
+        "escalation: expected true, got false ()",
+        "facts missing: team member"
+      ]
+    },
+    {
+      "id": "un-05",
+      "category": "unanswerable",
+      "traceId": "tr_e9d0f8597261",
+      "notes": [
+        "intent: expected policy_question, got product_question"
+      ]
+    }
+  ],
+  "heldout_failure_ids_hidden": true,
+  "judge_used": false
+}

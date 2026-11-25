@@ -1,0 +1,4 @@
+-- Optional: run only when an embeddings key is configured (scripts/db-migrate.ts does this automatically).
+create extension if not exists vector;
+alter table chunks add column if not exists embedding_vec vector(1536);
+create index if not exists chunks_embedding_idx on chunks using hnsw (embedding_vec vector_cosine_ops);

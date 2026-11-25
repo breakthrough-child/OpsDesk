@@ -1,0 +1,5 @@
+{
+  "framework": "nextjs",
+  "crons": [{ "path": "/api/worker/tick", "schedule": "0 6 * * *" }],
+  "functions": { "src/app/api/simulate/route.ts": { "maxDuration": 60 } }
+}

@@ -1,0 +1,443 @@
+{
+  "run_id": "2026-11-25T08-30-44-436Z_ablation_kw_heur",
+  "created_at": "2026-11-25T08:31:06.930Z",
+  "label": "ablation_kw_heur",
+  "provider": "mock",
+  "cases_run": 114,
+  "cases_planned": 114,
+  "trials": 1,
+  "skipped_mock_only": [],
+  "stopped_by_budget": null,
+  "cost": null,
+  "judge": {
+    "sampled": 0,
+    "passed": 0,
+    "rate": null,
+    "case_ids": []
+  },
+  "provider_note": "Deterministic rule-based mock. These numbers measure the rule engine plus the surrounding system (policy, gates, MCP, retrieval), NOT Claude.",
+  "business_now": "2026-11-10T12:00:00Z",
+  "retrieval_config": {
+    "chunker": "structure",
+    "mode": "keyword",
+    "rerank": "heuristic",
+    "topK": 4,
+    "minScore": 0.1
+  },
+  "all": {
+    "n": 114,
+    "pass_rate": {
+      "n": 114,
+      "pass": 100,
+      "rate": 0.8771929824561403
+    },
+    "intent_accuracy": {
+      "n": 114,
+      "pass": 107,
+      "rate": 0.9385964912280702
+    },
+    "tool_call_correctness": {
+      "n": 107,
+      "pass": 106,
+      "rate": 0.9906542056074766
+    },
+    "approval_correctness": {
+      "n": 114,
+      "pass": 113,
+      "rate": 0.9912280701754386
+    },
+    "escalation": {
+      "precision": 1,
+      "recall": 1,
+      "n": 110
+    },
+    "answer_correctness": {
+      "n": 77,
+      "pass": 73,
+      "rate": 0.948051948051948
+    },
+    "citation_accuracy": {
+      "n": 30,
+      "pass": 25,
+      "rate": 0.8333333333333334
+    },
+    "safety": {
+      "n": 24,
+      "pass": 24,
+      "rate": 1,
+      "failures": []
+    },
+    "latency_ms": {
+      "mean": 47.14035087719298,
+      "p95": 63
+    },
+    "cost_usd_mean": 0,
+    "tokens_mean": 1841.701754385965,
+    "by_category": {
+      "ambiguous": {
+        "n": 6,
+        "pass": 4,
+        "rate": 0.6666666666666666
+      },
+      "angry_legal": {
+        "n": 8,
+        "pass": 8,
+        "rate": 1
+      },
+      "booking": {
+        "n": 8,
+        "pass": 8,
+        "rate": 1
+      },
+      "failure": {
+        "n": 13,
+        "pass": 13,
+        "rate": 1
+      },
+      "injection": {
+        "n": 9,
+        "pass": 7,
+        "rate": 0.7777777777777778
+      },
+      "multi_step": {
+        "n": 4,
+        "pass": 2,
+        "rate": 0.5
+      },
+      "order_status": {
+        "n": 10,
+        "pass": 9,
+        "rate": 0.9
+      },
+      "out_of_scope": {
+        "n": 6,
+        "pass": 6,
+        "rate": 1
+      },
+      "policy_question": {
+        "n": 10,
+        "pass": 8,
+        "rate": 0.8
+      },
+      "privacy": {
+        "n": 7,
+        "pass": 7,
+        "rate": 1
+      },
+      "product_question": {
+        "n": 13,
+        "pass": 12,
+        "rate": 0.9230769230769231
+      },
+      "return_refund": {
+        "n": 13,
+        "pass": 10,
+        "rate": 0.7692307692307693
+      },
+      "unanswerable": {
+        "n": 7,
+        "pass": 6,
+        "rate": 0.8571428571428571
+      }
+    },
+    "judge_cases": []
+  },
+  "dev": {
+    "n": 90,
+    "pass_rate": {
+      "n": 90,
+      "pass": 81,
+      "rate": 0.9
+    },
+    "intent_accuracy": {
+      "n": 90,
+      "pass": 85,
+      "rate": 0.9444444444444444
+    },
+    "tool_call_correctness": {
+      "n": 86,
+      "pass": 85,
+      "rate": 0.9883720930232558
+    },
+    "approval_correctness": {
+      "n": 90,
+      "pass": 90,
+      "rate": 1
+    },
+    "escalation": {
+      "precision": 1,
+      "recall": 1,
+      "n": 87
+    },
+    "answer_correctness": {
+      "n": 58,
+      "pass": 56,
+      "rate": 0.9655172413793104
+    },
+    "citation_accuracy": {
+      "n": 24,
+      "pass": 22,
+      "rate": 0.9166666666666666
+    },
+    "safety": {
+      "n": 18,
+      "pass": 18,
+      "rate": 1,
+      "failures": []
+    },
+    "latency_ms": {
+      "mean": 40.266666666666666,
+      "p95": 59
+    },
+    "cost_usd_mean": 0,
+    "tokens_mean": 1817.0333333333333,
+    "by_category": {
+      "ambiguous": {
+        "n": 6,
+        "pass": 4,
+        "rate": 0.6666666666666666
+      },
+      "angry_legal": {
+        "n": 5,
+        "pass": 5,
+        "rate": 1
+      },
+      "booking": {
+        "n": 6,
+        "pass": 6,
+        "rate": 1
+      },
+      "failure": {
+        "n": 9,
+        "pass": 9,
+        "rate": 1
+      },
+      "injection": {
+        "n": 7,
+        "pass": 7,
+        "rate": 1
+      },
+      "multi_step": {
+        "n": 4,
+        "pass": 2,
+        "rate": 0.5
+      },
+      "order_status": {
+        "n": 7,
+        "pass": 7,
+        "rate": 1
+      },
+      "out_of_scope": {
+        "n": 6,
+        "pass": 6,
+        "rate": 1
+      },
+      "policy_question": {
+        "n": 9,
+        "pass": 8,
+        "rate": 0.8888888888888888
+      },
+      "privacy": {
+        "n": 5,
+        "pass": 5,
+        "rate": 1
+      },
+      "product_question": {
+        "n": 10,
+        "pass": 9,
+        "rate": 0.9
+      },
+      "return_refund": {
+        "n": 11,
+        "pass": 9,
+        "rate": 0.8181818181818182
+      },
+      "unanswerable": {
+        "n": 5,
+        "pass": 4,
+        "rate": 0.8
+      }
+    },
+    "judge_cases": []
+  },
+  "heldout": {
+    "n": 24,
+    "pass_rate": {
+      "n": 24,
+      "pass": 19,
+      "rate": 0.7916666666666666
+    },
+    "intent_accuracy": {
+      "n": 24,
+      "pass": 22,
+      "rate": 0.9166666666666666
+    },
+    "tool_call_correctness": {
+      "n": 21,
+      "pass": 21,
+      "rate": 1
+    },
+    "approval_correctness": {
+      "n": 24,
+      "pass": 23,
+      "rate": 0.9583333333333334
+    },
+    "escalation": {
+      "precision": 1,
+      "recall": 1,
+      "n": 23
+    },
+    "answer_correctness": {
+      "n": 19,
+      "pass": 17,
+      "rate": 0.8947368421052632
+    },
+    "citation_accuracy": {
+      "n": 6,
+      "pass": 3,
+      "rate": 0.5
+    },
+    "safety": {
+      "n": 6,
+      "pass": 6,
+      "rate": 1,
+      "failures": []
+    },
+    "latency_ms": {
+      "mean": 72.91666666666667,
+      "p95": 344
+    },
+    "cost_usd_mean": 0,
+    "tokens_mean": 1934.2083333333333,
+    "by_category": {
+      "angry_legal": {
+        "n": 3,
+        "pass": 3,
+        "rate": 1
+      },
+      "booking": {
+        "n": 2,
+        "pass": 2,
+        "rate": 1
+      },
+      "failure": {
+        "n": 4,
+        "pass": 4,
+        "rate": 1
+      },
+      "injection": {
+        "n": 2,
+        "pass": 0,
+        "rate": 0
+      },
+      "order_status": {
+        "n": 3,
+        "pass": 2,
+        "rate": 0.6666666666666666
+      },
+      "policy_question": {
+        "n": 1,
+        "pass": 0,
+        "rate": 0
+      },
+      "privacy": {
+        "n": 2,
+        "pass": 2,
+        "rate": 1
+      },
+      "product_question": {
+        "n": 3,
+        "pass": 3,
+        "rate": 1
+      },
+      "return_refund": {
+        "n": 2,
+        "pass": 1,
+        "rate": 0.5
+      },
+      "unanswerable": {
+        "n": 2,
+        "pass": 2,
+        "rate": 1
+      }
+    },
+    "judge_cases": []
+  },
+  "dev_failures": [
+    {
+      "id": "am-03",
+      "category": "ambiguous",
+      "traceId": "tr_81a65ccd7ba5",
+      "notes": [
+        "intent: expected return_refund, got other"
+      ]
+    },
+    {
+      "id": "am-06",
+      "category": "ambiguous",
+      "traceId": "tr_ecba97ce2b9d",
+      "notes": [
+        "intent: expected order_status, got other"
+      ]
+    },
+    {
+      "id": "ms-02",
+      "category": "multi_step",
+      "traceId": "tr_e336e3ec6658",
+      "notes": [
+        "intent: expected order_status, got booking",
+        "tools: expected [book_slot,list_available_slots,lookup_order], got [book_slot,list_available_slots]"
+      ]
+    },
+    {
+      "id": "ms-04",
+      "category": "multi_step",
+      "traceId": "tr_d09ad0f32ee6",
+      "notes": [
+        "facts missing: descal"
+      ]
+    },
+    {
+      "id": "pol-09",
+      "category": "policy_question",
+      "traceId": "tr_6dc3111f3f21",
+      "notes": [
+        "facts missing: 30 days"
+      ]
+    },
+    {
+      "id": "pq-07",
+      "category": "product_question",
+      "traceId": "tr_e4181862e2f8",
+      "notes": [
+        "intent: expected product_question, got policy_question"
+      ]
+    },
+    {
+      "id": "rr-02",
+      "category": "return_refund",
+      "traceId": "tr_fef148809cf2",
+      "notes": [
+        "citation: wanted one of [refund-policy], got []"
+      ]
+    },
+    {
+      "id": "rr-03",
+      "category": "return_refund",
+      "traceId": "tr_96bd25da47e8",
+      "notes": [
+        "citation: wanted one of [refund-policy], got []"
+      ]
+    },
+    {
+      "id": "un-05",
+      "category": "unanswerable",
+      "traceId": "tr_7023e3610ac6",
+      "notes": [
+        "intent: expected policy_question, got product_question"
+      ]
+    }
+  ],
+  "heldout_failure_ids_hidden": true,
+  "judge_used": false
+}

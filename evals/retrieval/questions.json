@@ -1,0 +1,474 @@
+{
+ "answerable": [
+  {
+   "id": "rq-01",
+   "question": "How many days do I have to return an item?",
+   "gold_doc": "refund-policy",
+   "gold_passage": "within 30 days of the delivery date"
+  },
+  {
+   "id": "rq-02",
+   "question": "Can I return opened coffee beans?",
+   "gold_doc": "refund-policy",
+   "gold_passage": "cannot be returned once opened"
+  },
+  {
+   "id": "rq-03",
+   "question": "What is the restocking fee on opened equipment?",
+   "gold_doc": "refund-policy",
+   "gold_passage": "15% restocking fee"
+  },
+  {
+   "id": "rq-04",
+   "question": "Who pays for return shipping on a defective item?",
+   "gold_doc": "refund-policy",
+   "gold_passage": "we pay for return shipping"
+  },
+  {
+   "id": "rq-05",
+   "question": "How much is the flat return label?",
+   "gold_doc": "refund-policy",
+   "gold_passage": "$8.95 return label"
+  },
+  {
+   "id": "rq-06",
+   "question": "How long do I have to report damage on arrival?",
+   "gold_doc": "refund-policy",
+   "gold_passage": "within 7 days of delivery"
+  },
+  {
+   "id": "rq-07",
+   "question": "When will my refund arrive after the warehouse gets the item?",
+   "gold_doc": "refund-policy",
+   "gold_passage": "within 5 to 7 business days"
+  },
+  {
+   "id": "rq-08",
+   "question": "Do large refunds need manager approval?",
+   "gold_doc": "refund-policy",
+   "gold_passage": "Refunds over $150 require manager approval"
+  },
+  {
+   "id": "rq-09",
+   "question": "Can I get store credit for returns after 30 days?",
+   "gold_doc": "refund-policy",
+   "gold_passage": "between 31 and 45 days"
+  },
+  {
+   "id": "rq-10",
+   "question": "Is the freight return fee different?",
+   "gold_doc": "refund-policy",
+   "gold_passage": "flat $65 freight return fee"
+  },
+  {
+   "id": "rq-11",
+   "question": "What time is the order cutoff for same day shipping?",
+   "gold_doc": "shipping-policy",
+   "gold_passage": "before 2:00 pm Pacific Time"
+  },
+  {
+   "id": "rq-12",
+   "question": "How much does express shipping cost?",
+   "gold_doc": "shipping-policy",
+   "gold_passage": "costs $19.95"
+  },
+  {
+   "id": "rq-13",
+   "question": "Is shipping free over a certain order value?",
+   "gold_doc": "shipping-policy",
+   "gold_passage": "$75 or more ship free"
+  },
+  {
+   "id": "rq-14",
+   "question": "How long does freight delivery take for the ES-200?",
+   "gold_doc": "shipping-policy",
+   "gold_passage": "7 to 10 business days"
+  },
+  {
+   "id": "rq-15",
+   "question": "Do you ship internationally?",
+   "gold_doc": "shipping-policy",
+   "gold_passage": "We ship to Canada only"
+  },
+  {
+   "id": "rq-16",
+   "question": "Who pays customs duties on Canadian orders?",
+   "gold_doc": "shipping-policy",
+   "gold_passage": "responsible for duties and import taxes"
+  },
+  {
+   "id": "rq-17",
+   "question": "What if my tracking shows no movement?",
+   "gold_doc": "shipping-policy",
+   "gold_passage": "no movement for 10 business days"
+  },
+  {
+   "id": "rq-18",
+   "question": "Can I change my delivery address after shipping?",
+   "gold_doc": "shipping-policy",
+   "gold_passage": "only before an order has shipped"
+  },
+  {
+   "id": "rq-19",
+   "question": "Can freight items go to a PO box?",
+   "gold_doc": "shipping-policy",
+   "gold_passage": "cannot be shipped to PO boxes"
+  },
+  {
+   "id": "rq-20",
+   "question": "How long is the equipment warranty?",
+   "gold_doc": "warranty-terms",
+   "gold_passage": "2 year warranty"
+  },
+  {
+   "id": "rq-21",
+   "question": "What if my equipment is dead on arrival?",
+   "gold_doc": "warranty-terms",
+   "gold_passage": "free replacement"
+  },
+  {
+   "id": "rq-22",
+   "question": "What does the warranty not cover?",
+   "gold_doc": "warranty-terms",
+   "gold_passage": "Consumables, accessories such as tampers"
+  },
+  {
+   "id": "rq-23",
+   "question": "What do I need to make a warranty claim?",
+   "gold_doc": "warranty-terms",
+   "gold_passage": "the order number, the product serial number"
+  },
+  {
+   "id": "rq-24",
+   "question": "What is the hourly repair labor rate out of warranty?",
+   "gold_doc": "warranty-terms",
+   "gold_passage": "$85 per hour"
+  },
+  {
+   "id": "rq-25",
+   "question": "How long do warranty repairs take?",
+   "gold_doc": "warranty-terms",
+   "gold_passage": "10 to 15 business days"
+  },
+  {
+   "id": "rq-26",
+   "question": "When is customer support open on weekdays?",
+   "gold_doc": "opening-hours",
+   "gold_passage": "8:00 am to 6:00 pm Pacific Time"
+  },
+  {
+   "id": "rq-27",
+   "question": "What are the Saturday showroom hours?",
+   "gold_doc": "opening-hours",
+   "gold_passage": "Saturday 10:00 am to 1:00 pm"
+  },
+  {
+   "id": "rq-28",
+   "question": "Where is the showroom located?",
+   "gold_doc": "opening-hours",
+   "gold_passage": "214 Baker Lane"
+  },
+  {
+   "id": "rq-29",
+   "question": "Which holidays are you closed?",
+   "gold_doc": "opening-hours",
+   "gold_passage": "Thanksgiving Day and the day after"
+  },
+  {
+   "id": "rq-30",
+   "question": "How fast are emails answered?",
+   "gold_doc": "opening-hours",
+   "gold_passage": "within 1 business day"
+  },
+  {
+   "id": "rq-31",
+   "question": "What voltage is your equipment?",
+   "gold_doc": "product-faq",
+   "gold_passage": "120V"
+  },
+  {
+   "id": "rq-32",
+   "question": "Does the tamper fit the ES-200?",
+   "gold_doc": "product-faq",
+   "gold_passage": "fits the ES-200"
+  },
+  {
+   "id": "rq-33",
+   "question": "How long do grinder burrs last?",
+   "gold_doc": "product-faq",
+   "gold_passage": "about 800 lb of coffee"
+  },
+  {
+   "id": "rq-34",
+   "question": "Is the decaf made with chemical solvents?",
+   "gold_doc": "product-faq",
+   "gold_passage": "no chemical solvents"
+  },
+  {
+   "id": "rq-35",
+   "question": "How long do unopened coffee bags keep?",
+   "gold_doc": "product-faq",
+   "gold_passage": "keep for 6 months"
+  },
+  {
+   "id": "rq-36",
+   "question": "What size are syrup bottles?",
+   "gold_doc": "product-faq",
+   "gold_passage": "750 ml bottles"
+  },
+  {
+   "id": "rq-37",
+   "question": "What filters does the DB-12 use?",
+   "gold_doc": "product-faq",
+   "gold_passage": "standard number 4 cone filters"
+  },
+  {
+   "id": "rq-38",
+   "question": "What water connection does the ice maker need?",
+   "gold_doc": "product-faq",
+   "gold_passage": "3/8 inch connection"
+  },
+  {
+   "id": "rq-39",
+   "question": "Do you give advice on electrical installation?",
+   "gold_doc": "product-faq",
+   "gold_passage": "cannot give advice on food safety, health claims, electrical installation"
+  },
+  {
+   "id": "rq-40",
+   "question": "What is the ES-200 boiler configuration?",
+   "gold_doc": "manual-es200",
+   "gold_passage": "dual boiler espresso machine"
+  },
+  {
+   "id": "rq-41",
+   "question": "How much does the ES-200 weigh?",
+   "gold_doc": "manual-es200",
+   "gold_passage": "Weight is 62 lb"
+  },
+  {
+   "id": "rq-42",
+   "question": "What does error E1 mean on the ES-200?",
+   "gold_doc": "manual-es200",
+   "gold_passage": "water tank is empty or out of position"
+  },
+  {
+   "id": "rq-43",
+   "question": "How often should I descale an espresso machine?",
+   "gold_doc": "manual-es200",
+   "gold_passage": "Descale every 3 months"
+  },
+  {
+   "id": "rq-44",
+   "question": "How do I backflush the ES-200?",
+   "gold_doc": "manual-es200",
+   "gold_passage": "5 cycles of 10 seconds on and 10 seconds off"
+  },
+  {
+   "id": "rq-45",
+   "question": "What is the factory brew temperature of the ES-200?",
+   "gold_doc": "manual-es200",
+   "gold_passage": "93 degrees Celsius"
+  },
+  {
+   "id": "rq-46",
+   "question": "How many grind steps does the GR-90 have?",
+   "gold_doc": "manual-gr90",
+   "gold_passage": "40 grind steps"
+  },
+  {
+   "id": "rq-47",
+   "question": "What step should I start at for drip coffee on the grinder?",
+   "gold_doc": "manual-gr90",
+   "gold_passage": "For drip coffee start at step 28"
+  },
+  {
+   "id": "rq-48",
+   "question": "Why did my GR-90 stop after a few seconds?",
+   "gold_doc": "manual-gr90",
+   "gold_passage": "thermal cutout has tripped"
+  },
+  {
+   "id": "rq-49",
+   "question": "What is the hopper capacity of the grinder?",
+   "gold_doc": "manual-gr90",
+   "gold_passage": "hopper holds 1.2 lb"
+  },
+  {
+   "id": "rq-50",
+   "question": "How long does the DB-12 take to brew a full pot?",
+   "gold_doc": "manual-db12",
+   "gold_passage": "about 8 minutes"
+  },
+  {
+   "id": "rq-51",
+   "question": "How long does the carafe keep coffee hot?",
+   "gold_doc": "manual-db12",
+   "gold_passage": "up to 2 hours"
+  },
+  {
+   "id": "rq-52",
+   "question": "What does H1 mean on the drip brewer?",
+   "gold_doc": "manual-db12",
+   "gold_passage": "heating element is too hot"
+  },
+  {
+   "id": "rq-53",
+   "question": "How much ice does the IM-40 make per day?",
+   "gold_doc": "manual-im40",
+   "gold_passage": "up to 40 lb of cubed ice a day"
+  },
+  {
+   "id": "rq-54",
+   "question": "How often should the ice maker filter be replaced?",
+   "gold_doc": "manual-im40",
+   "gold_passage": "Replace the water filter every 6 months"
+  },
+  {
+   "id": "rq-55",
+   "question": "Does the IM-40 need clearance around it?",
+   "gold_doc": "manual-im40",
+   "gold_passage": "3 inches of clearance"
+  },
+  {
+   "id": "rq-56",
+   "question": "How long do consultation slots last?",
+   "gold_doc": "consultation-bookings",
+   "gold_passage": "Slots are 30 minutes long"
+  },
+  {
+   "id": "rq-57",
+   "question": "How much notice do I need to reschedule a consultation?",
+   "gold_doc": "consultation-bookings",
+   "gold_passage": "up to 24 hours before the slot"
+  },
+  {
+   "id": "rq-58",
+   "question": "How many points do I need for $5 off?",
+   "gold_doc": "loyalty-and-pricing",
+   "gold_passage": "500 points can be redeemed for $5"
+  },
+  {
+   "id": "rq-59",
+   "question": "What is the price match window?",
+   "gold_doc": "loyalty-and-pricing",
+   "gold_passage": "within 14 days of purchase"
+  },
+  {
+   "id": "rq-60",
+   "question": "How much discount do I get on bulk consumables?",
+   "gold_doc": "loyalty-and-pricing",
+   "gold_passage": "10 or more units of the same consumable item get 10% off"
+  },
+  {
+   "id": "rq-61",
+   "question": "Can I cancel an order after it ships?",
+   "gold_doc": "payment-and-orders",
+   "gold_passage": "An order that has shipped cannot be cancelled"
+  },
+  {
+   "id": "rq-62",
+   "question": "How long can I change an order after placing it?",
+   "gold_doc": "payment-and-orders",
+   "gold_passage": "within 1 hour of placing it"
+  },
+  {
+   "id": "rq-63",
+   "question": "Do you accept PayPal?",
+   "gold_doc": "payment-and-orders",
+   "gold_passage": "Visa, Mastercard, American Express and PayPal"
+  },
+  {
+   "id": "rq-64",
+   "question": "Will you share my order details with my spouse?",
+   "gold_doc": "privacy-and-data",
+   "gold_passage": "never share order details"
+  },
+  {
+   "id": "rq-65",
+   "question": "How long are support messages kept?",
+   "gold_doc": "privacy-and-data",
+   "gold_passage": "Support messages are kept for 2 years"
+  },
+  {
+   "id": "rq-66",
+   "question": "What is Brightside Descaler made of?",
+   "gold_doc": "cleaning-and-maintenance",
+   "gold_passage": "citric acid based descaler"
+  },
+  {
+   "id": "rq-67",
+   "question": "How often should drip brewers be descaled?",
+   "gold_doc": "cleaning-and-maintenance",
+   "gold_passage": "Drip brewers every month"
+  },
+  {
+   "id": "rq-68",
+   "question": "Do gift cards expire?",
+   "gold_doc": "loyalty-and-pricing",
+   "gold_passage": "Gift cards never expire"
+  }
+ ],
+ "unanswerable": [
+  {
+   "id": "ru-01",
+   "question": "Do you sell wedding cakes?"
+  },
+  {
+   "id": "ru-02",
+   "question": "What is the wattage of the ES-300 espresso machine?"
+  },
+  {
+   "id": "ru-03",
+   "question": "Does the GR-90 come in red?"
+  },
+  {
+   "id": "ru-04",
+   "question": "What is the lead time for custom branded cups?"
+  },
+  {
+   "id": "ru-05",
+   "question": "Do you offer financing or leasing on equipment?"
+  },
+  {
+   "id": "ru-06",
+   "question": "Is the DB-12 NSF certified?"
+  },
+  {
+   "id": "ru-07",
+   "question": "Do you have a wholesale tier discount for 50 cases of cups?"
+  },
+  {
+   "id": "ru-08",
+   "question": "What is the name of your CEO?"
+  },
+  {
+   "id": "ru-09",
+   "question": "Do you sell espresso machine gaskets separately?"
+  },
+  {
+   "id": "ru-10",
+   "question": "What grind size is best for cold brew?"
+  },
+  {
+   "id": "ru-11",
+   "question": "Do you have a mobile app?"
+  },
+  {
+   "id": "ru-12",
+   "question": "Can I pay with cryptocurrency?"
+  },
+  {
+   "id": "ru-13",
+   "question": "Do you offer barista training courses?"
+  },
+  {
+   "id": "ru-14",
+   "question": "Are your paper cups compostable?"
+  },
+  {
+   "id": "ru-15",
+   "question": "Do you sell almond milk?"
+  }
+ ]
+}
